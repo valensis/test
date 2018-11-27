@@ -1,0 +1,24 @@
+
+
+
+List<Department> departments = db.Departments.ToList();
+
+            SelectList dropdownList = new SelectList(departments, "DepartmentID", "DepartmentName", 0);
+            ViewBag.Departments = dropdownList;
+
+
+
+students/create you look where department is ad then you replace
+
+<div class="form-group">
+        @Html.Label("Department", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select class="form-control" id="DepartmentID" name="DepartmentID">
+                @foreach (var c in ViewBag.Departments)
+                {
+                    <option value=@c.Value>@c.Text</option>
+                }
+            </select>
+            @Html.ValidationMessageFor(model => model.DepartmentID, "", new { @class = "text-danger" })
+        </div>
+    </div>
